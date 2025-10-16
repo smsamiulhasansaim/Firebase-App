@@ -1,3 +1,4 @@
+/* Components/Login/Login.css */
 * {
   margin: 0;
   padding: 0;
@@ -106,6 +107,17 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.social-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.social-btn:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
 .social-icon {
   width: 20px;
   height: 20px;
@@ -159,8 +171,9 @@
 
 .password-label-container {
   display: flex;
-  justify-content: between;
+  justify-content: flex-end;
   align-items: center;
+  margin-top: 8px;
 }
 
 .forgot-link {
@@ -195,6 +208,11 @@
   color: #999;
 }
 
+.form-input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
 .form-options {
   display: flex;
   align-items: center;
@@ -224,6 +242,7 @@
   border-radius: 4px;
   position: relative;
   transition: all 0.3s ease;
+  background: white;
 }
 
 .checkbox-container input:checked + .checkmark {
@@ -243,6 +262,12 @@
   transform: rotate(45deg);
 }
 
+.checkbox-container input:disabled + .checkmark {
+  background: #f5f5f5;
+  border-color: #ddd;
+  cursor: not-allowed;
+}
+
 .login-btn {
   background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
@@ -256,13 +281,19 @@
   margin-top: 8px;
 }
 
-.login-btn:hover {
+.login-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
 }
 
-.login-btn:active {
+.login-btn:active:not(:disabled) {
   transform: translateY(0);
+}
+
+.login-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .login-footer {
@@ -285,36 +316,6 @@
   color: #5a6fd8;
 }
 
-/* Responsive Design */
-@media (max-width: 480px) {
-  .login-card {
-    padding: 32px 24px;
-    margin: 20px;
-  }
-  
-  .login-title {
-    font-size: 28px;
-  }
-  
-  .social-btn {
-    padding: 12px 16px;
-    font-size: 14px;
-  }
-}
-
-/* Loading animation for buttons */
-.social-btn:active,
-.login-btn:active {
-  transform: scale(0.98);
-}
-
-/* Focus states for accessibility */
-.social-btn:focus,
-.form-input:focus,
-.login-btn:focus {
-  outline: 2px solid #667eea;
-  outline-offset: 2px;
-}
 .error-message {
   background: #fee;
   border: 1px solid #fcc;
@@ -324,6 +325,7 @@
   margin-bottom: 16px;
   font-size: 14px;
   text-align: center;
+  line-height: 1.4;
 }
 
 .loading-container {
@@ -347,4 +349,29 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 32px 24px;
+    margin: 20px;
+  }
+  
+  .login-title {
+    font-size: 28px;
+  }
+  
+  .social-btn {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+}
+
+/* Focus states for accessibility */
+.social-btn:focus,
+.form-input:focus,
+.login-btn:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
 }
